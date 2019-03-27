@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Menu } from 'semantic-ui-react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Search from './Search/Search';
+import History from './History/History';
+import About from './About/About';
+
+
 
 class App extends Component {
+
+  state = {}
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <>
+          <Menu color={'blue'} inverted widths={3}>
+            <Menu.Item
+              name='home'
+              as={Link}
+              to='/' />
+            <Menu.Item
+              name='History'
+              as={Link}
+              to='/history'
+            />
+            <Menu.Item
+              name='About'
+              as={Link}
+              to='/about'
+            />
+          </Menu>
+          <Route path="/" exact component={Search} />
+          <Route path="/history" component={History} />
+          <Route path="/about" component={About} />
+        </>
+      </BrowserRouter>
     );
   }
 }
