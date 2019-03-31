@@ -15,7 +15,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <>
-          <Menu color={'blue'} inverted widths={3}>
+          <Menu
+            color={'blue'}
+            inverted
+            widths={3}>
             <Menu.Item
               name='home'
               as={Link}

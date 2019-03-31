@@ -1,44 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/actions';
 
 import { Button, Form, Segment, Container, Header, Icon, } from 'semantic-ui-react';
 
-const API = "http://pokeapi.co/api/v2/pokemon/";
+// const API = "http://pokeapi.co/api/v2/pokemon/";
 
 class Search extends Component {
     state = {
         searchInput: '',
-        searchResults: []
     }
 
-    handleSearchPhraseChange = (event) => {
+    handleSearchPhraseChange = (e) => {
         this.setState({
-            searchInput: event.target.value
+            searchInput: e.target.value
         })
     }
 
     handlePokemonSearch = () => {
-        fetch(API + `${this.state.searchInput}`)
-            .then(response => {
-                if (response.ok) {
-                    return response
-                }
-                throw Error(response.status)
-            })
-            .then(response => response.json())
-            .then(data => {
-                const a = [...this.state.searchResults]
-                a.unshift(data)
-                this.setState({
-                    searchResults: a
-                })
-            })
-            .catch(error => console.log(error))
+        const inputValue = this.state.searchInput;
+        this.props.pokemonUserSearch(inputValue)
+    }
 
+    handleRandomSearch = () => {
+        const randomValue = Math.floor(Math.random() * 807 + 1)
+        this.props.pokemonRandomSearch(randomValue)
     }
 
     render() {
-
-        const results = <p style={{ marginTop: '50px' }}>trolololo</p>
         return (
             <>
                 <Segment
@@ -48,27 +37,42 @@ class Search extends Component {
                 >
                     <Container text>
                         <Header
-                            content="Pokemon Gen-1 Search"
+                            content="Pokemon Search"
                         />
                         <Form>
                             <Form.Group>
-                                <Form.Input label="Search for cards" placeholder="Type search phrase" width={16} value={this.state.searchPhrase} onChange={this.handleSearchPhraseChange} />
+                                <Form.Input label="Search for cards" placeholder="Type search phrase" width={16}
+                                    onChange={(e) => this.handleSearchPhraseChange(e)}
+                                    value={this.props.value} />
                             </Form.Group>
                             <Button onClick={this.handlePokemonSearch}>
                                 Submit
                                <Icon name="right arrow" />
                             </Button>
-                            <Button onClick={this.handleLol}>
+                            <Button onClick={this.handleRandomSearch} >
                                 <Icon name="random" />
                                 Random!
                               </Button>
                         </Form>
                     </Container>
-                    {results}
                 </Segment>
             </>
         );
     }
 }
 
-export default Search;
+const mapStateToProps = state => {
+    return {
+        pkmSearches: state.searchResults,
+        historySearches: state.historySearches
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        pokemonUserSearch: (inputValue) => dispatch(actionCreators.inputSearch(inputValue)),
+        pokemonRandomSearch: (randomValue) => dispatch(actionCreators.randomSearch(randomValue))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
