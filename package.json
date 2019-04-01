@@ -1,8 +1,10 @@
 {
-  "name": "pok_gen1_search",
+  "name": "poke_search",
+  "homepage": "https://preludek.github.io/poke_search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",
@@ -13,6 +15,8 @@
     "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
