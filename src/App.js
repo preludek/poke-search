@@ -21,7 +21,7 @@ class App extends Component {
               as={Link}
               to='/' />
             <Menu.Item
-              name='History'
+              name=' Search History'
               as={Link}
               to='/history'
             />

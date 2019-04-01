@@ -4,12 +4,20 @@ const initialState = {
     searchResults: [],
     historySearches: [],
     errors: [],
+    fetching: false
 }
 
 
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
+
+        case actionTypes.SEARCH_REQUEST:
+            return {
+                ...state,
+                searchResults: [],
+                fetching: true
+            }
 
         case actionTypes.SEARCH_SUCCESS:
             const updatedHistory = state.historySearches
@@ -19,6 +27,7 @@ const reducer = (state = initialState, action) => {
                 errors: [],
                 historySearches: updatedHistory,
                 searchResults: action.results,
+                fetching: false
             }
 
         case actionTypes.SEARCH_ERROR:
@@ -26,19 +35,17 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 searchResults: [],
                 errors: action.errors,
+                fetching: false
             }
 
-        case actionTypes.INPUT_CHANGE:
+        case actionTypes.HISTORY_SUCCESS:
             return {
                 ...state,
-                errors: [],
+                searchResults: action.results,
+                fetching: false
             }
 
-        case actionTypes.INPUT_SEARCH:
-            return {
 
-
-            }
 
         default:
             return state
