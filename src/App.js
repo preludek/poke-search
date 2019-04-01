@@ -19,15 +19,15 @@ class App extends Component {
             <Menu.Item
               name='home'
               as={Link}
-              to='/poke_search' />
+              to='/' />
             <Menu.Item
               name=' Search History'
               as={Link}
-              to='/poke_search/history'
+              to='/history'
             />
           </Menu>
-          <Route path="/poke_search" exact component={Search} />
-          <Route path="/poke_search/history" component={History} />
+          <Route path="/" exact component={Search} />
+          <Route path="/history" component={History} />
         </>
       </BrowserRouter>
     );
