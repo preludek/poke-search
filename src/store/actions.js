@@ -41,17 +41,3 @@ export const randomSearch = (randomValue) => {
             })
     }
 }
-
-
-// export const inputSearch = (inputvalue) => {
-//     return async (dispatch) => {
-//         const response = await fetch(API + `${inputvalue}`);
-//         const data = await response.json()
-//         console.log(response)
-//         if (response.status === 200) {
-//             return dispatch(searchSuccess(data));
-//         } else {
-//             return dispatch(searchError(`Either this pokemon doesn't exist or the API died :(`))
-//         }
-//     }
-// }

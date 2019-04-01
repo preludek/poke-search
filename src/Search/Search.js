@@ -18,13 +18,17 @@ class Search extends Component {
     }
 
     handlePokemonSearch = () => {
-        const inputValue = this.state.searchInput;
-        this.props.pokemonUserSearch(inputValue)
+        if (this.state.searchInput) {
+            const inputValue = this.state.searchInput;
+            this.props.pokemonUserSearch(inputValue);
+            this.props.history.push(`/history`)
+        } else { alert('Please type pokemon to search') }
     }
 
     handleRandomSearch = () => {
         const randomValue = Math.floor(Math.random() * 807 + 1)
         this.props.pokemonRandomSearch(randomValue)
+        this.props.history.push(`/history`)
     }
 
     render() {

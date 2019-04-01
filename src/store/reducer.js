@@ -24,6 +24,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SEARCH_ERROR:
             return {
                 ...state,
+                searchResults: [],
                 errors: action.errors,
             }
 

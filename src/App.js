@@ -3,9 +3,6 @@ import { Menu } from 'semantic-ui-react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Search from './Search/Search';
 import History from './History/History';
-import About from './About/About';
-
-
 
 class App extends Component {
 
@@ -18,7 +15,7 @@ class App extends Component {
           <Menu
             color={'blue'}
             inverted
-            widths={3}>
+            widths={2}>
             <Menu.Item
               name='home'
               as={Link}
@@ -28,15 +25,9 @@ class App extends Component {
               as={Link}
               to='/history'
             />
-            <Menu.Item
-              name='About'
-              as={Link}
-              to='/about'
-            />
           </Menu>
           <Route path="/" exact component={Search} />
           <Route path="/history" component={History} />
-          <Route path="/about" component={About} />
         </>
       </BrowserRouter>
     );

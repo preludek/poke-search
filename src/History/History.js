@@ -36,8 +36,9 @@ class History extends Component {
                     </Table>
                     <Image src={this.props.pkmSearches.sprites.front_default} size='small' floated='right' style={{ marginRight: '50px' }} />
                 </Segment>
-
             )
+        } else if (!this.props.pkmSearches.id && this.props.errors) {
+            result = (<Header>{this.props.errors}</Header>)
         }
         const history = this.props.historySearches.map((search => (
             <Table.Row key={search.id}>
@@ -81,49 +82,9 @@ class History extends Component {
 const mapStateToProps = state => {
     return {
         pkmSearches: state.searchResults,
-        historySearches: state.historySearches
+        historySearches: state.historySearches,
+        errors: state.errors
     };
 };
 
 export default connect(mapStateToProps)(History)
-
-// import React from 'react';
-// import { connect } from 'react-redux'
-// import { Table, Header, Segment } from 'semantic-ui-react';
-
-// const History = (props) => {
-//     const result = state.pkmSearches
-//     return (
-//         <>
-//             <Segment
-//                 textAlign="center"
-//                 style={{ minHeight: '50vh', width: '900px', margin: '100px auto 0 auto' }}
-//                 vertical
-//             >
-//                 <Header>Search History:</Header>
-//                 <Table celled>
-//                     <Table.Header>
-//                         <Table.Row>
-//                             <Table.HeaderCell>Id</Table.HeaderCell>
-//                             <Table.HeaderCell>Name</Table.HeaderCell>
-//                             <Table.HeaderCell>Type</Table.HeaderCell>
-//                             <Table.HeaderCell>Height/ Weight</Table.HeaderCell>
-//                         </Table.Row>
-//                     </Table.Header>
-//                     <Table.Body>
-//                         {result}
-//                     </Table.Body>
-//                 </Table>
-//             </Segment>
-//         </>
-//     )
-// }
-
-// const mapStateToProps = state => {
-//     return {
-//         pkmSearches: state.searchResults,
-//         historySearches: state.historySearches
-//     };
-// };
-
-// export default connect(mapStateToProps)(History)
