@@ -1,6 +1,6 @@
 {
   "name": "poke_search",
-  "homepage": "https://preludek.github.io/poke_search",
+  "homepage": "https://poke-searching.firebaseapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

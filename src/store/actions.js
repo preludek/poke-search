@@ -7,7 +7,7 @@ export const INPUT_SEARCH = 'INPUT_SEARCH';
 export const RANDOM_SEARCH = 'RANDOM_SEARCH';
 export const HISTORY_SUCCESS = 'HISTORY_SUCCESS';
 
-const API = "http://pokeapi.co/api/v2/pokemon/";
+const API = "https://pokeapi.co/api/v2/pokemon/";
 
 export const searchRequest = () => ({ type: SEARCH_REQUEST });
 

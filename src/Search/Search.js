@@ -4,8 +4,6 @@ import * as actionCreators from '../store/actions';
 
 import { Button, Form, Segment, Container, Header, Icon, } from 'semantic-ui-react';
 
-// const API = "http://pokeapi.co/api/v2/pokemon/";
-
 class Search extends Component {
     state = {
         searchInput: '',
